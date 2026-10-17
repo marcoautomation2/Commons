@@ -21,10 +21,10 @@ public final class Require{
     "java.util.Collections$UnmodifiableRandomAccessList"
   );
   public static <E> boolean unmodifiable(List<E> xs, String what){
-    assert jdkUmodLists.contains(xs.getClass().getName()): what+" must be unmodifiable. Name is: "+xs.getClass().getName();
+    assert jdkUmodLists.contains(xs.getClass().getName()) : what+" must be unmodifiable. Name is: "+xs.getClass().getName();
     return true;
   }
-  public static boolean nonNull(Object...os){
+  public static boolean nonNull(Object... os){
     for (var o : os){ Objects.requireNonNull(o); }
     return true;
   }
@@ -44,7 +44,7 @@ public final class Require{
   public static <E> boolean unmodifiableDistinct(List<E> xs, String what){
     unmodifiable(xs, what);
     var seen= Collections.newSetFromMap(new IdentityHashMap<E,Boolean>());
-    assert xs.stream().allMatch(seen::add): what+" must have distinct elements (==)";
+    assert xs.stream().allMatch(seen::add) : what+" must have distinct elements (==)";
     return true;
   }
   public static void check(boolean ok, String msg){
